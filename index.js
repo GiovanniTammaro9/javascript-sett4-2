@@ -82,3 +82,23 @@ Promise.allSettled([funzione5(), funzione6(), funzione7()])
         }
     });
 });
+//promise asincrona
+function promiseConMessaggio() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("messagggio della promise dopo 2 secondi");
+        }, 2000);
+    });
+}
+
+async function esegui() {
+    try {
+        const messaggio = await promiseConMessaggio();
+        console.log(messaggio);
+    }catch (errore) {
+        console.error("si è verificato un errore", errore);
+    }
+    
+}
+
+esegui();
