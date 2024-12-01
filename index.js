@@ -102,3 +102,27 @@ async function esegui() {
 }
 
 esegui();
+//gestione errori con try catch
+function promiseConEsito(successo) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if(successo) {
+                resolve("la promessa è stata risolta con successo");
+            }else {
+                reject("la promessa è stata rifiutata a causa di un errore");
+            }
+        }, 2000);
+    });
+}
+
+async function esegui(successo) {
+    try {
+        const messagggio2 = await promiseConEsito(successo);
+        console.log(messagggio2);
+    }catch (errore) {
+        console.error(errore);
+    }
+}
+
+esegui(true);
+esegui(false);
